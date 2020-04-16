@@ -20,11 +20,9 @@ if __name__ == '__main__':
     num = args.n
     alpha = args.alpha
     side = int(np.floor(np.power(num, 1.0/dim)))
-    print(side)
-    inicio=initialize(dim,num,side)
-
-    print(inicio)
+    inicio=initialize(dim,side)
     D=distanceMatrix(dim,num,side)
-    W=transitionMatrix(D, alpha)
     print(D)
-    print(W)
+    W=transitionMatrix(D, alpha)
+    evals, evect = getEigenthings(W) 
+    Pt = getProbT(evals, evect)
