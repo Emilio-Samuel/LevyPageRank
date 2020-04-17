@@ -21,8 +21,9 @@ if __name__ == '__main__':
     alpha = args.alpha
     side = int(np.floor(np.power(num, 1.0/dim)))
     inicio=initialize(dim,side)
-    D=distanceMatrix(dim,num,side)
-    print(D)
+    D = distanceMatrix(dim,num,side)
     W=transitionMatrix(D, alpha)
-    evals, evect = getEigenthings(W) 
-    Pt = getProbT(evals, evect)
+    print(W[3].sum())
+    eigenval, eigenvect, invZ = getEigenthings(W)
+    Pt = getProbT(eigenval, eigenvect, invZ,2)
+    print(Pt[5].sum())
